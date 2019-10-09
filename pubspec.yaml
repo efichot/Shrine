@@ -21,6 +21,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: Rubik
+      fonts:
+        - asset: fonts/Rubik-Medium.ttf
+        - asset: fonts/Rubik-Regular.ttf
+
   assets:
     - assets/diamond.png
     - packages/shrine_images/0-0.jpg
