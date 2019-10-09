@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shrine',
+      theme: ThemeData(fontFamily: 'Rubik'),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/login',
