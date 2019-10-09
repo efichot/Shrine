@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Text('You did it!'),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }
