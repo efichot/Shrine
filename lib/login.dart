@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                 RaisedButton(
                   child: Text('NEXT'),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/');
                   },
                 ),
               ],
