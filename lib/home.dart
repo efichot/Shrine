@@ -1,6 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'model/product.dart';
+import 'model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
+  List<Card> _buildCards(BuildContext context) {
+    List<Product> listProducts = ProductsRepository.loadProducts(Category.all);
+
+    if (listProducts == null || listProducts.isEmpty) {
+      return const <Card>[];
+    }
+
+    final ThemeData theme = Theme.of(context);
+    final NumberFormat formatter = NumberFormat.simpleCurrency(
+        locale: Localizations.localeOf(context).toString());
+
+    return listProducts.map((Product product) {
+      return Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 4 / 2.5,
+              child: Image.asset(
+                product.assetName,
+                package: product.assetPackage,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(8, 12, 8, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      product.name,
+                      style: theme.textTheme.title,
+                      maxLines: 1,
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      formatter.format(product.price),
+                      style: theme.textTheme.body2,
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,30 +94,7 @@ class HomePage extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
-        children: <Widget>[
-          Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                AspectRatio(
-                  aspectRatio: 4 / 2.5,
-                  child: Image.asset('assets/diamond.png'),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 12, 8, 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Title'),
-                      SizedBox(height: 8),
-                      Text('Secondary Text')
-                    ],
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+        children: _buildCards(context),
       ),
       resizeToAvoidBottomInset: false,
     );
