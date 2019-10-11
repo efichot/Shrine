@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Rubik'),
       home: HomePage(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/',
       onGenerateRoute: _getRoute,
     );
   }
