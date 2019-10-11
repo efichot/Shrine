@@ -36,8 +36,33 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Center(
-        child: Text('You did it!'),
+      body: GridView.count(
+        crossAxisCount: 2,
+        padding: EdgeInsets.all(16.0),
+        children: <Widget>[
+          Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 4 / 2.5,
+                  child: Image.asset('assets/diamond.png'),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 12, 8, 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Title'),
+                      SizedBox(height: 8),
+                      Text('Secondary Text')
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
       resizeToAvoidBottomInset: false,
     );
