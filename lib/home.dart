@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'colors.dart';
 import 'model/product.dart';
 import 'model/products_repository.dart';
 
@@ -63,14 +64,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(
+              Icons.menu,
+              semanticLabel: 'menu',
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
           ),
-          onPressed: () {
-            print('menu toggle');
-          },
         ),
         title: Text('SHRINE'),
         actions: <Widget>[
@@ -93,6 +96,29 @@ class HomePage extends StatelessWidget {
             },
           )
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            Container(
+              height: 55,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 18, left: 10),
+                child: Text('MENU', style: Theme.of(context).textTheme.button),
+              ),
+              color: kShrinePink100,
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: GridView.count(
         crossAxisCount: 2,
