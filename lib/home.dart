@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AspectRatio(
-              aspectRatio: 4 / 2.5,
+              aspectRatio: 4 / 2.7,
               child: Image.asset(
                 product.assetName,
                 package: product.assetPackage,
@@ -31,22 +31,24 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(8, 12, 8, 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      product.name,
-                      style: theme.textTheme.title,
-                      maxLines: 1,
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      formatter.format(product.price),
-                      style: theme.textTheme.body2,
-                    )
-                  ],
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(8, 12, 8, 12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        product.name,
+                        style: theme.textTheme.button,
+                        maxLines: 1,
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        formatter.format(product.price),
+                        style: theme.textTheme.caption,
+                      )
+                    ],
+                  ),
                 ),
               ),
             )

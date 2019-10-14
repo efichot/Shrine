@@ -28,19 +28,13 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 120.0),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  filled: true,
-                  labelText: 'Username'),
+              decoration: InputDecoration(labelText: 'Username'),
             ),
             SizedBox(height: 12.0),
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  filled: true,
-                  labelText: 'Password'),
+              decoration: InputDecoration(labelText: 'Password'),
             ),
             ButtonBar(
               children: <Widget>[
