@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
     return listProducts.map((Product product) {
       return Card(
         clipBehavior: Clip.antiAlias,
+        elevation: 1.0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

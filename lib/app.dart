@@ -10,22 +10,26 @@ ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData(fontFamily: 'Rubik');
 
   return base.copyWith(
-      brightness: Brightness.dark,
-      accentColor: kShrineBrown900,
-      primaryColor: kShrinePink100,
-      buttonTheme: base.buttonTheme.copyWith(
+    brightness: Brightness.dark,
+    accentColor: kShrineBrown900,
+    primaryColor: kShrinePink100,
+    buttonTheme: base.buttonTheme.copyWith(
         buttonColor: kShrinePink100,
         textTheme: ButtonTextTheme.normal,
-      ),
-      scaffoldBackgroundColor: kShrineBackgroundWhite,
-      cardColor: kShrineBackgroundWhite,
-      textSelectionColor: kShrinePink100,
-      errorColor: kShrineErrorRed,
-      textTheme: _buildShrineTextTheme(base.textTheme),
-      primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
-      accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
-      primaryIconTheme: base.iconTheme.copyWith(color: kShrineBrown900),
-      inputDecorationTheme: InputDecorationTheme(border: OutlineInputBorder()));
+        shape: BeveledRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(7.0)))),
+    scaffoldBackgroundColor: kShrineBackgroundWhite,
+    cardColor: kShrineBackgroundWhite,
+    textSelectionColor: kShrinePink100,
+    errorColor: kShrineErrorRed,
+    textTheme: _buildShrineTextTheme(base.textTheme),
+    primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
+    accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
+    primaryIconTheme: base.iconTheme.copyWith(color: kShrineBrown900),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(),
+    ),
+  );
 }
 
 TextTheme _buildShrineTextTheme(TextTheme base) {
