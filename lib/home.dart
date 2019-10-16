@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(8, 12, 8, 12),
+                  padding: EdgeInsets.fromLTRB(8, 12, 8, 8),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -62,64 +62,68 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: Icon(
-              Icons.menu,
-              semanticLabel: 'menu',
-            ),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
+    AppBar appBar = AppBar(
+      leading: Builder(
+        builder: (context) => IconButton(
+          icon: Icon(
+            Icons.menu,
+            semanticLabel: 'menu',
           ),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
-        title: Text('SHRINE'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              semanticLabel: 'search',
-            ),
-            onPressed: () {
-              print('search');
-            },
+      ),
+      title: Text('SHRINE'),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(
+            Icons.search,
+            semanticLabel: 'search',
           ),
-          IconButton(
-            icon: Icon(
-              Icons.tune,
-              semanticLabel: 'tune',
+          onPressed: () {
+            print('search');
+          },
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.tune,
+            semanticLabel: 'tune',
+          ),
+          onPressed: () {
+            print('tune');
+          },
+        )
+      ],
+    );
+
+    Drawer drawer = Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          Container(
+            height: 55,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 18, left: 10),
+              child: Text('MENU', style: Theme.of(context).textTheme.button),
             ),
-            onPressed: () {
-              print('tune');
-            },
-          )
+            color: kShrinePink100,
+          ),
+          ListTile(
+            title: Text('Item 1'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text('Item 2'),
+            onTap: () {},
+          ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            Container(
-              height: 55,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 18, left: 10),
-                child: Text('MENU', style: Theme.of(context).textTheme.button),
-              ),
-              color: kShrinePink100,
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
+    );
+
+    return Scaffold(
+      appBar: appBar,
+      drawer: drawer,
       body: GridView.count(
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
