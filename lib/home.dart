@@ -5,14 +5,23 @@ import 'colors.dart';
 import 'model/product.dart';
 import 'model/products_repository.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Category category;
+
+  @override
+  void initState() {
+    super.initState();
+    category = Category.all;
+  }
+
   List<Card> _buildCards(BuildContext context) {
-    List<Product> listProducts = ProductsRepository.loadProducts(Category.all);
-
-    if (listProducts == null || listProducts.isEmpty) {
-      return const <Card>[];
-    }
-
+    final List<Product> listProducts =
+        ProductsRepository.loadProducts(category);
     final ThemeData theme = Theme.of(context);
     final NumberFormat formatter = NumberFormat.simpleCurrency(
         locale: Localizations.localeOf(context).toString());
@@ -110,12 +119,40 @@ class HomePage extends StatelessWidget {
             color: kShrinePink100,
           ),
           ListTile(
-            title: Text('Item 1'),
-            onTap: () {},
+            title: Text('All'),
+            onTap: () {
+              setState(() {
+                category = Category.all;
+              });
+              Navigator.pop(context);
+            },
           ),
           ListTile(
-            title: Text('Item 2'),
-            onTap: () {},
+            title: Text('Accessories'),
+            onTap: () {
+              setState(() {
+                category = Category.accessories;
+              });
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text('Clothing'),
+            onTap: () {
+              setState(() {
+                category = Category.clothing;
+              });
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text('Home'),
+            onTap: () {
+              setState(() {
+                category = Category.home;
+              });
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
