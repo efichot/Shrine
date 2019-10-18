@@ -24,11 +24,11 @@ flutter:
   fonts:
     - family: Rubik
       fonts:
-        - asset: fonts/Rubik-Medium.ttf
-        - asset: fonts/Rubik-Regular.ttf
+        - asset: assets/fonts/Rubik-Medium.ttf
+        - asset: assets/fonts/Rubik-Regular.ttf
 
   assets:
-    - assets/diamond.png
+    - assets/images/diamond.png
     - packages/shrine_images/0-0.jpg
     - packages/shrine_images/1-0.jpg
     - packages/shrine_images/2-0.jpg
